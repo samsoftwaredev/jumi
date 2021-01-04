@@ -1,4 +1,4 @@
-class CircleRosary {
+class RosaryBeats {
   constructor(x, y, radius, color, beats) {
     this.x = x;
     this.y = y;

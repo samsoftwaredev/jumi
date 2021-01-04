@@ -1,23 +1,31 @@
 class RosaryText {
-  constructor(x, y, color, size = "18px", font = "Cinzel") {
+  constructor(x, y, color = "#000", prayer, size = "18px", font = "Cinzel") {
     this.x = x;
     this.y = y;
     this.size = size;
+    this.prayer = prayer;
     this.font = font;
     this.color = color;
     this.opacity = 1;
-    this.prayer = prayers.creed;
   }
   updateCoordinate(x, y) {
     this.x += x;
     this.y += y;
   }
-  updateOpacity(opa) {
-    this.opacity += opa;
-  }
-  updatePrayer(prayer) {
+  setPrayer(prayer) {
     this.prayer = prayer;
   }
+  easeOutText() {
+    this.opacity = 0;
+    this.intervalId = setInterval(() => {
+      this.opacity += 0.1;
+      if (this.opacity >= 1) clearInterval(this.intervalId);
+    }, 50);
+  }
+  update = ({ prayer }) => {
+    this.prayer = prayer;
+    easeOutText();
+  };
   draw() {
     if (this.prayer) {
       const sentences = this.prayer.text.split("/");
