@@ -22,10 +22,11 @@ const getTopNav = () => {
   const navLinksElement = document.createElement("UL");
   navLinksElement.classList.add("navbar-nav", "me-auto", "mb-2", "mb-lg-0");
   // links
-  const links = [
-    { label: "Grupos", href: "/grups" },
-    { label: "El Rosario", href: "/rosary" },
-  ];
+  const links = [];
+  links.push({ label: "Grupos", href: "/grups" });
+  links.push({ label: "El Rosario", href: "/rosary" });
+  links.push({ label: "Articulos", href: "/articulos" });
+
   const linkElements = links.map(({ label, href }) => {
     const ilElement = document.createElement("LI");
     ilElement.classList.add("nav-item");

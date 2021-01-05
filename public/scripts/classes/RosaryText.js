@@ -15,7 +15,7 @@ class RosaryText {
   setPrayer(prayer) {
     this.prayer = prayer;
   }
-  easeOutText() {
+  easeInText() {
     this.opacity = 0;
     this.intervalId = setInterval(() => {
       this.opacity += 0.1;
@@ -24,7 +24,7 @@ class RosaryText {
   }
   update = ({ prayer }) => {
     this.prayer = prayer;
-    easeOutText();
+    this.easeInText();
   };
   draw() {
     if (this.prayer) {

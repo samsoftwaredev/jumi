@@ -1,5 +1,4 @@
 class RosaryPrayer {
-  d = new Date();
   observers = [];
   endDateOfPrayer = null;
   prayerType = prayers;
@@ -27,7 +26,7 @@ class RosaryPrayer {
     return this.prayersList[this.prayerIndex];
   }
   getMystery(daySelected) {
-    const dayOfTheWeek = isNaN(daySelected) ? this.d.getDay() : daySelected;
+    const dayOfTheWeek = isNaN(daySelected) ? new Date().getDay() : daySelected;
     const arrOfPrayersDays = Object.values(this.rosaryDays);
     const mysteryName = arrOfPrayersDays[dayOfTheWeek];
     const mystery = this.rosaryMysteries[mysteryName];
@@ -69,8 +68,9 @@ class RosaryPrayer {
     const total = values.reduce((a, b) => a + parseFloat(b), 0);
     return total;
   }
-  update() {
+  updatePrayer() {
     const date = new Date();
+    // console.log(this.endDateOfPrayer);
     // exit update if it reach the final prayer
     if (this.prayerIndex >= this.prayersList.length - 1) return;
 
@@ -95,10 +95,10 @@ class RosaryPrayer {
       if (item !== fn) return item;
     });
   }
-  fire(o, thisObj) {
+  fire(obj, thisObj) {
     var scope = thisObj || window;
     this.observers.forEach(function (item) {
-      item.call(scope, o);
+      item.call(scope, obj);
     });
   }
   init() {

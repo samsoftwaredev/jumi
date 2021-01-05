@@ -7,7 +7,7 @@ let oldTimeStamp = new Date().getTime();
 let timePassed = 0;
 
 // rosary
-const rosary = new RosaryPrayer();
+const rosary = new RosaryControls();
 rosary.init();
 
 const numOfBeats = new Array(11).fill(null);
