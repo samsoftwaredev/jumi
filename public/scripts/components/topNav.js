@@ -24,7 +24,7 @@ const getTopNav = () => {
   // links
   const links = [];
   links.push({ label: "Grupos", href: "/grups" });
-  links.push({ label: "El Rosario", href: "/rosary" });
+  links.push({ label: "El Rosario", href: "/rosario" });
   links.push({ label: "Articulos", href: "/articulos" });
 
   const linkElements = links.map(({ label, href }) => {

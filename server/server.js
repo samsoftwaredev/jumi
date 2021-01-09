@@ -5,7 +5,7 @@ const port = 3000;
 
 app.use(express.static("public"));
 
-app.get("/rosary", function (req, res) {
+app.get("/rosario", function (req, res) {
   res.send("rosario");
 });
 
