@@ -54,15 +54,6 @@ function gameLoop(timeStamp) {
   window.requestAnimationFrame(gameLoop);
 }
 
-let mouse = {
-  x: innerWidth / 2,
-  y: innerHeight / 2,
-};
-
-addEventListener("mouseover", () => {
-  mouse.x;
-});
-
 // display on body
 document.body.append(getTopNav());
 document.body.append(canvas);
