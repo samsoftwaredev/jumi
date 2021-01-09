@@ -13,7 +13,6 @@ app.get("/grups", function (req, res) {
   res.send("grupos");
 });
 
-const server = app.listen(port, function () {
-  const host = server.address().address;
-  console.log("Example app listening at http://%s:%s", host, port);
+app.listen(port, function () {
+  console.log(`App listening at http://localhost:${port}`);
 });
