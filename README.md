@@ -25,3 +25,6 @@ Port will be listening on port 3000
 ### Folder structure
 - Server = where the server code (Node.js) will live
 - Public = where the front end code will live. 
+-- scrips = JS files
+-- styles = CSS files
+-- assets = Images/videos etc.
