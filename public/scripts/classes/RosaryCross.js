@@ -4,6 +4,7 @@ class RosaryCross {
     this.y = y;
     this.color = color;
   }
+  update() {}
   draw() {
     // the cross
     const widthOfCross = 5;

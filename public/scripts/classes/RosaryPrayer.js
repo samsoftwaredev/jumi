@@ -22,6 +22,15 @@ class RosaryPrayer {
     }
     return null;
   }
+  getPrayerIndex() {
+    return this.prayerIndex;
+  }
+  getEndDateOfPayer() {
+    return this.endDateOfPrayer;
+  }
+  setEndDateOfPayer(date) {
+    this.endDateOfPrayer = date;
+  }
   getPrayer() {
     return this.prayersList[this.prayerIndex];
   }
@@ -32,7 +41,7 @@ class RosaryPrayer {
     const mystery = this.rosaryMysteries[mysteryName];
     return mystery;
   }
-  setPrayersList() {
+  getPrayersList() {
     const mysteryInfo = this.getMystery();
     const arr = [
       // 1
@@ -60,8 +69,10 @@ class RosaryPrayer {
     arr.push(this.prayerType.salve);
     arr.push(this.prayerType.signOfCross);
 
-    this.prayersList = arr;
-    return this.prayersList;
+    return arr;
+  }
+  setPrayersList(list) {
+    this.prayersList = list;
   }
   getDuration() {
     const values = this.prayersList.map(({ duration }) => duration);
@@ -102,6 +113,6 @@ class RosaryPrayer {
     });
   }
   init() {
-    this.setPrayersList();
+    this.setPrayersList(this.getPrayersList());
   }
 }
