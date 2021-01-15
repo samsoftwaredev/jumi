@@ -1,18 +1,3 @@
-class Progressbar {
-  constructor(x, y, width, height, color) {
-    this.x = x;
-    this.y = y;
-    this.height = height;
-    this.width = width;
-    this.color = color;
-  }
-  draw() {
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
-}
-
 class RosaryControls extends RosaryPrayer {
   timeRemaining = null;
   constructor(isPause, num = 0) {
@@ -46,27 +31,31 @@ class RosaryControls extends RosaryPrayer {
   }
   setProgressBar() {
     const partsOfLine = ctx.canvas.width / this.prayersList.length;
+    const partsOfLineRounded = Math.trunc(partsOfLine);
     const x = 0;
     const y = ctx.canvas.height - 20;
     let position = x;
-    this.prayersList.forEach(() => {
-      const block = new Progressbar(
-        position + 1,
+    this.progressbar = this.prayersList.map((prayer, i) => {
+      const block = new Rectangle(
+        position + 3,
         y,
-        partsOfLine - 1,
-        2,
-        "#ff00ff"
+        Math.fround(partsOfLineRounded) - 1,
+        4, // width
+        "#fff"
       );
-      this.progressbar.push(block);
-      position += partsOfLine;
+      position += Math.fround(partsOfLineRounded);
+      return block;
     });
   }
-  draw() {
-    const prayerIndex = this.getPrayerIndex();
-    this.progressbar.forEach((bar, i) => {
-      bar.draw();
-      if (prayerIndex === i) bar.fillStyle = "#000";
-    });
+  playButton() {
+    con.fillStyle = "red";
+    con.font = "20pt sans-serif";
+    con.fillText("Play", 5, 100);
+  }
+  pauseButton() {
+    con.fillStyle = "red";
+    con.font = "20pt sans-serif";
+    con.fillText("Pause", 15, 100);
   }
   update() {
     if (!this.isPause) this.updatePrayer();

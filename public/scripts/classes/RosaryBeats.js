@@ -1,23 +1,25 @@
 class RosaryBeats {
-  constructor(x, y, radius, color, beats) {
+  constructor(x, y, radius, beats, color, highlightColor) {
     this.x = x;
     this.y = y;
     this.radius = radius;
-    this.color = color;
     this.beats = beats;
+    this.color = color;
+    this.highlightColor = highlightColor;
     this.interval = (Math.PI * 2) / beats.length;
     this.radius = 100;
     this.currentBeatIndex = 0;
   }
   used() {
     if (Array.isArray(this.beats)) {
-      this.beats[this.currentBeatIndex].color = "black";
-      // reset if all beast were used
-      if (this.beats.length === this.currentBeatIndex + 1) {
+      // if the current beat index is at zero index, set default color
+      if (this.currentBeatIndex === 0) {
+        // reset if all beast were used
         this.beats.forEach((beat, i) => {
           this.beats[i].color = this.color;
         });
       }
+      this.beats[this.currentBeatIndex].color = this.highlightColor;
     }
   }
   unUsed() {
@@ -31,15 +33,17 @@ class RosaryBeats {
       beat: this.beats[this.currentBeatIndex],
     };
   }
-  nextBeat() {
+  nextBeat = ({ prayer }) => {
+    // if the current prayer is a beat, count it
+    if (!prayer.beat) return;
+    this.used();
     this.currentBeatIndex += 1;
     this.currentBeatIndex = this.currentBeatIndex % this.beats.length;
-    this.used();
-  }
+  };
   prevBeat() {
+    this.unUsed();
     this.currentBeatIndex -= 1;
     this.currentBeatIndex = this.currentBeatIndex % this.beats.length;
-    this.unUsed();
   }
   jumpTo(num) {
     this.currentBeatIndex = num % this.beats.length;

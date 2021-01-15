@@ -43,32 +43,31 @@ class RosaryPrayer {
   }
   getPrayersList() {
     const mysteryInfo = this.getMystery();
-    const arr = [
-      // 1
-      this.prayerType.start,
-      this.prayerType.creed,
-      this.prayerType.actOfContrition,
-      // 2
-      this.prayerType.ourFather,
-      // 3
-      this.prayerType.hailMary,
-      this.prayerType.hailMary,
-      this.prayerType.hailMary,
-      this.prayerType.glory,
-    ];
+    const arr = [];
+    // 1
+    arr.push(this.prayerType.start);
+    arr.push(this.prayerType.creed);
+    arr.push(this.prayerType.petitions);
+    arr.push(this.prayerType.actOfContrition);
     // 4
     mysteryInfo.mysteries.forEach((mystery) => {
-      arr.push(mystery);
-      arr.push(this.prayerType.ourFather);
+      arr.push({ ...mystery, mystery: true });
+      arr.push({ ...this.prayerType.ourFather, cross: true });
       new Array(10).fill(null).forEach(() => {
-        arr.push(this.prayerType.hailMary);
+        arr.push({ ...this.prayerType.hailMary, beat: true });
       });
+      arr.push(this.prayerType.glory);
       arr.push(this.prayerType.jaculatoria2);
+      arr.push(this.prayerType.jaculatoria3);
     });
     // 5
+    arr.push(this.prayerType.pope);
+    arr.push(this.prayerType.ourFather);
+    arr.push(this.prayerType.hailMary);
+    arr.push(this.prayerType.glory);
     arr.push(this.prayerType.salve);
+    arr.push(this.prayerType.letaniasLauretanas);
     arr.push(this.prayerType.signOfCross);
-
     return arr;
   }
   setPrayersList(list) {
@@ -92,7 +91,7 @@ class RosaryPrayer {
     } else if (date.getTime() > this.endDateOfPrayer.getTime()) {
       // end date reached, prayer was completed
       this.nextPrayer();
-      this.fire({ prayer: this.getPrayer() });
+      this.fire({ prayer: this.getPrayer(), prayerIndex: this.prayerIndex });
       this.endDateOfPrayer = null; // reset the end date
     } else {
       // while the end date hasn't been reached

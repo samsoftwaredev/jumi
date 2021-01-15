@@ -3,37 +3,45 @@ const ctx = canvas.getContext("2d");
 
 let movingSpeed = 50;
 let secondsPassed = 0;
-let oldTimeStamp = new Date().getTime();
+let oldTimestamp = new Date().getTime();
 let timePassed = 0;
 
 // rosary
 const rosary = new RosaryControls();
 rosary.init();
 rosary.setProgressBar();
-const numOfBeats = new Array(11).fill(null);
+const numOfBeats = new Array(10).fill(null);
 let beats = numOfBeats.map(() => new Circle(10, 10, 7, themeColors.theme3));
 let rosaryBeats = new RosaryBeats(
   150,
   canvas.height / 2,
   100,
-  themeColors.theme1,
-  beats
+  beats,
+  themeColors.theme3,
+  themeColors.theme1
 );
-let rosaryCross = new RosaryCross(150, canvas.height / 2, themeColors.theme1);
+let rosaryCross = new RosaryCross(
+  150,
+  canvas.height / 2,
+  themeColors.theme3,
+  themeColors.theme1
+);
 // text
 let rosaryText = new RosaryText(
-  canvas.width * (1 / 4),
+  350,
   canvas.height * (1 / 8),
   themeColors.theme2,
   rosary.getPrayer()
 );
 
 rosary.subscribe(rosaryCross.update);
+rosary.subscribe(rosaryBeats.nextBeat);
 rosary.subscribe(rosaryText.update);
 
 function draw() {
   rosaryText.draw();
-  rosary.draw();
+  rosaryBeats.draw();
+  rosaryCross.draw();
 }
 
 function update() {
@@ -41,22 +49,26 @@ function update() {
   rosary.update();
 }
 
-function gameLoop(timeStamp) {
+function gameLoop(timestamp) {
   // Calculate how much time has passed
-  secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-  oldTimeStamp = timeStamp;
+  secondsPassed = (timestamp - oldTimestamp) / 1000;
+  oldTimestamp = timestamp;
   if (secondsPassed > -1) {
     // Clear the entire canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     update(); // Update game objects in the loop
     draw();
   }
-  window.requestAnimationFrame(gameLoop);
+  // stop loop if the user reach the last prayer
+  if (rosary.getPrayerIndex() < rosary.prayersList.length - 1) {
+    window.requestAnimationFrame(gameLoop);
+  }
 }
 
 // display on body
 document.body.append(getTopNav());
 document.body.append(canvas);
 // start
-gameLoop(new Date().getTime());
+window.requestAnimationFrame(gameLoop);
 const totalTime = rosary.getDuration() / 60000;
+console.log(totalTime, rosary.getPrayer());

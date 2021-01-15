@@ -20,13 +20,20 @@ class RosaryText {
   };
   draw() {
     if (this.prayer) {
-      const sentences = this.prayer.text.split("/");
-      sentences.forEach((str, index) => {
-        const lineSpacing = index * 40;
-        ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`;
-        ctx.font = `${this.size} ${this.font}`;
-        ctx.fillText(str.trim(), this.x, this.y + lineSpacing);
-      });
+      ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`;
+      ctx.font = `${this.size} ${this.font}`;
+      console.log(this.prayer);
+      const hasSlashes = this.prayer.text.includes("/");
+      if (hasSlashes) {
+        const sentences = this.prayer.text.split("/");
+        if (!Array.isArray(sentences)) return "";
+        sentences.forEach((str, index) => {
+          const lineSpacing = index * 40;
+          ctx.fillText(str.trim(), this.x, this.y + lineSpacing);
+        });
+      } else {
+        ctx.fillText(this.prayer.text, this.x, this.y);
+      }
     }
   }
 }
