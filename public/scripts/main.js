@@ -66,9 +66,38 @@ function gameLoop(timestamp) {
 }
 
 // display on body
-document.body.append(getTopNav());
+// document.body.append(getTopNav());
 document.body.append(canvas);
 // start
 window.requestAnimationFrame(gameLoop);
-const totalTime = rosary.getDuration() / 60000;
-console.log(totalTime, rosary.getPrayer());
+const totalTimeInMin = rosary.getDuration() / 60000;
+console.log(totalTimeInMin);
+
+// canvas.addEventListener("mousemove", function (e) {
+//   console.log(
+//     rosary.progressbar[0].x,
+//     rosary.progressbar[0].y,
+//     e.clientX,
+//     e.clientY
+//   );
+//   beats.forEach((beat) => {
+//     if (
+//       e.clientX > beat.x - beat.radius &&
+//       e.clientX < beat.x + beat.radius &&
+//       e.clientY > beat.y - beat.radius &&
+//       e.clientY < beat.y + beat.radius
+//     ) {
+//       beat.color = "#fff000";
+//     }
+//   });
+//   rosary.progressbar.forEach((block) => {
+//     if (
+//       e.clientX > block.x &&
+//       e.clientX < block.x + block.width &&
+//       e.clientY > block.y &&
+//       e.clientY < block.y + block.height
+//     ) {
+//       block.color = "#fff000";
+//     }
+//   });
+// });
