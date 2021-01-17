@@ -48,13 +48,15 @@ class RosaryBeats {
   jumpTo(num) {
     this.currentBeatIndex = num % this.beats.length;
   }
-  // all beads
   draw() {
+    // all beads
     this.beats.map((dot, i) => {
       const desiredRadianAngleOnCircle = this.interval * i;
 
       var x = this.x + this.radius * Math.sin(desiredRadianAngleOnCircle) * -1;
       var y = this.y + this.radius * Math.cos(desiredRadianAngleOnCircle) * -1;
+      x = Math.floor(x);
+      y = Math.floor(y);
 
       ctx.beginPath();
       dot.x = x;
