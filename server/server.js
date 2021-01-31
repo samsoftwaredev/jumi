@@ -6,11 +6,13 @@ const port = 3000;
 app.use(express.static("public"));
 
 app.get("/rosario", function (req, res) {
-  res.send("rosario");
+  const rosaryPath = path.join(__dirname, "..", "public/views/rosary.html");
+  res.sendFile(rosaryPath);
 });
 
-app.get("/grups", function (req, res) {
-  res.send("grupos");
+app.get("/grupos", function (req, res) {
+  const gruposPath = path.join(__dirname, "..", "public/views/grupos.html");
+  res.sendFile(gruposPath);
 });
 
 app.listen(port, function () {
