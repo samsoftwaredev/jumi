@@ -1,18 +1,36 @@
 const express = require("express");
 const app = express();
+var bodyParser = require("body-parser");
 const path = require("path");
 const port = 3000;
 
+// set the view engine to ejs
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "..", "public", "views"));
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
+
+// this will import all of the static files like css and js files
 app.use(express.static("public"));
 
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+app.use(bodyParser.json());
+
+// index page
+app.get("/", function (req, res) {
+  res.render("index.html");
+});
+
 app.get("/rosario", function (req, res) {
-  const rosaryPath = path.join(__dirname, "..", "public/views/rosary.html");
-  res.sendFile(rosaryPath);
+  res.render("rosary.html");
 });
 
 app.get("/grupos", function (req, res) {
-  const gruposPath = path.join(__dirname, "..", "public/views/grupos.html");
-  res.sendFile(gruposPath);
+  res.render("groups.html");
 });
 
 app.listen(port, function () {
