@@ -1,18 +1,18 @@
 class RosaryControls extends RosaryPrayer {
   timeRemaining = null;
-  constructor(isPause, num = 0) {
+  numIncreaseBy = ctx.canvas.width / this.getPrayersList().length;
+  progress = this.getPrayerIndex();
+  constructor(isPause) {
     super();
-    this.progressbar = new Array(num).fill(null);
     this.isPause = isPause;
   }
   next() {
+    this.progress += 1;
     this.nextPrayer();
   }
   prev() {
+    this.progress -= 1;
     this.prevPrayer();
-  }
-  jumpTo(num) {
-    new Array(num).fill(null).forEach(() => this.nextPrayer());
   }
   play() {
     this.isPause = false;
@@ -29,35 +29,13 @@ class RosaryControls extends RosaryPrayer {
     );
     this.setEndDateOfPayer(null);
   }
-  setProgressBar() {
-    const partsOfLine = ctx.canvas.width / this.prayersList.length;
-    const partsOfLineRounded = Math.trunc(partsOfLine);
-    const x = 0;
-    const y = ctx.canvas.height - 20;
-    let position = x;
-    this.progressbar = this.prayersList.map((prayer, i) => {
-      const block = new Rectangle(
-        position + 3,
-        y,
-        Math.fround(partsOfLineRounded) - 1,
-        4, // width
-        "#fff"
-      );
-      position += Math.fround(partsOfLineRounded);
-      return block;
-    });
-  }
-  playButton() {
-    con.fillStyle = "red";
-    con.font = "20pt sans-serif";
-    con.fillText("Play", 5, 100);
-  }
-  pauseButton() {
-    con.fillStyle = "red";
-    con.font = "20pt sans-serif";
-    con.fillText("Pause", 15, 100);
-  }
-  update() {
-    if (!this.isPause) this.updatePrayer();
+  update = () => {
+    this.progress += this.numIncreaseBy;
+  };
+  draw() {
+    if (this.isPause) return;
+    this.updatePrayer();
+    ctx.fillStyle = "rgba(0,0,0,0.09)";
+    ctx.fillRect(0, 0, this.progress, ctx.canvas.height);
   }
 }

@@ -22,7 +22,6 @@ class RosaryText {
     if (this.prayer) {
       ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity})`;
       ctx.font = `${this.size} ${this.font}`;
-      console.log(this.prayer);
       const hasSlashes = this.prayer.text.includes("/");
       if (hasSlashes) {
         const sentences = this.prayer.text.split("/");

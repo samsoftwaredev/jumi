@@ -85,97 +85,97 @@ const prayers = {
     // duration: 50000,
     duration: 1000,
     text: `
-Señor, ten piedad/
-Cristo, ten piedad/
-Señor, ten piedad./
-Cristo, óyenos./
-Cristo, escúchanos./
+      Señor, ten piedad/
+      Cristo, ten piedad/
+      Señor, ten piedad./
+      Cristo, óyenos./
+      Cristo, escúchanos./
 
-Dios, Padre celestial, /
-ten piedad de nosotros./
+      Dios, Padre celestial, /
+      ten piedad de nosotros./
 
-Dios, Hijo, Redentor del mundo, /
-Dios, Espíritu Santo, /
-Santísima Trinidad, un solo Dios,/
+      Dios, Hijo, Redentor del mundo, /
+      Dios, Espíritu Santo, /
+      Santísima Trinidad, un solo Dios,/
 
-Santa María, /
-ruega por nosotros./
-Santa Madre de Dios,/
-Santa Virgen de las Vírgenes,/
-Madre de Cristo, /
-Madre de la Iglesia, /
-Madre de la misericordia, /
-Madre de la divina gracia, /
-Madre de la esperanza, /
-Madre purísima, /
-Madre castísima, /
-Madre siempre virgen,/
-Madre inmaculada, /
-Madre amable, /
-Madre admirable, /
-Madre del buen consejo, /
-Madre del Creador, /
-Madre del Salvador, /
-Virgen prudentísima, /
-Virgen digna de veneración, /
-Virgen digna de alabanza, /
-Virgen poderosa, /
-Virgen clemente, /
-Virgen fiel, /
-Espejo de justicia, /
-Trono de la sabiduría, /
-Causa de nuestra alegría, /
-Vaso espiritual, /
-Vaso digno de honor, /
-Vaso de insigne devoción, /
-Rosa mística, /
-Torre de David, /
-Torre de marfil, /
-Casa de oro, /
-Arca de la Alianza, /
-Puerta del cielo, /
-Estrella de la mañana, /
-Salud de los enfermos, /
-Refugio de los pecadores, /
-Consuelo de los migrantes,/
-Consoladora de los afligidos, /
-Auxilio de los cristianos, /
-Reina de los Ángeles, /
-Reina de los Patriarcas, /
-Reina de los Profetas, /
-Reina de los Apóstoles, /
-Reina de los Mártires, /
-Reina de los Confesores, /
-Reina de las Vírgenes, /
-Reina de todos los Santos, /
-Reina concebida sin pecado original,/ 
-Reina asunta a los Cielos, /
-Reina del Santísimo Rosario, /
-Reina de la familia, /
-Reina de la paz./
+      Santa María, /
+      ruega por nosotros./
+      Santa Madre de Dios,/
+      Santa Virgen de las Vírgenes,/
+      Madre de Cristo, /
+      Madre de la Iglesia, /
+      Madre de la misericordia, /
+      Madre de la divina gracia, /
+      Madre de la esperanza, /
+      Madre purísima, /
+      Madre castísima, /
+      Madre siempre virgen,/
+      Madre inmaculada, /
+      Madre amable, /
+      Madre admirable, /
+      Madre del buen consejo, /
+      Madre del Creador, /
+      Madre del Salvador, /
+      Virgen prudentísima, /
+      Virgen digna de veneración, /
+      Virgen digna de alabanza, /
+      Virgen poderosa, /
+      Virgen clemente, /
+      Virgen fiel, /
+      Espejo de justicia, /
+      Trono de la sabiduría, /
+      Causa de nuestra alegría, /
+      Vaso espiritual, /
+      Vaso digno de honor, /
+      Vaso de insigne devoción, /
+      Rosa mística, /
+      Torre de David, /
+      Torre de marfil, /
+      Casa de oro, /
+      Arca de la Alianza, /
+      Puerta del cielo, /
+      Estrella de la mañana, /
+      Salud de los enfermos, /
+      Refugio de los pecadores, /
+      Consuelo de los migrantes,/
+      Consoladora de los afligidos, /
+      Auxilio de los cristianos, /
+      Reina de los Ángeles, /
+      Reina de los Patriarcas, /
+      Reina de los Profetas, /
+      Reina de los Apóstoles, /
+      Reina de los Mártires, /
+      Reina de los Confesores, /
+      Reina de las Vírgenes, /
+      Reina de todos los Santos, /
+      Reina concebida sin pecado original,/ 
+      Reina asunta a los Cielos, /
+      Reina del Santísimo Rosario, /
+      Reina de la familia, /
+      Reina de la paz./
 
-Cordero de Dios, que quitas el pecado del mundo, /
-perdónanos, Señor./
+      Cordero de Dios, que quitas el pecado del mundo, /
+      perdónanos, Señor./
 
-Cordero de Dios, que quitas el pecado del mundo, /
-escúchanos, Señor./
+      Cordero de Dios, que quitas el pecado del mundo, /
+      escúchanos, Señor./
 
-Cordero de Dios, que quitas el pecado del mundo, /
-ten misericordia de nosotros./
+      Cordero de Dios, que quitas el pecado del mundo, /
+      ten misericordia de nosotros./
 
-Ruega por nosotros, Santa Madre de Dios. /
-Para que seamos dignos de las promesas de Cristo./
+      Ruega por nosotros, Santa Madre de Dios. /
+      Para que seamos dignos de las promesas de Cristo./
 
-ORACIÓN. /
-Te rogamos nos concedas, /
-Señor Dios nuestro, /
-gozar de continua salud de alma y cuerpo, /
-y por la gloriosa intercesión /
-de la bienaventurada siempre Virgen María, /
-vernos libres de las tristezas de la vida presente /
-y disfrutar de las alegrías eternas. /
-Por Cristo nuestro Señor. /
-Amén. /
-`,
+      ORACIÓN. /
+      Te rogamos nos concedas, /
+      Señor Dios nuestro, /
+      gozar de continua salud de alma y cuerpo, /
+      y por la gloriosa intercesión /
+      de la bienaventurada siempre Virgen María, /
+      vernos libres de las tristezas de la vida presente /
+      y disfrutar de las alegrías eternas. /
+      Por Cristo nuestro Señor. /
+      Amén. /
+    `,
   },
 };

@@ -9,7 +9,6 @@ let timePassed = 0;
 // rosary
 const rosary = new RosaryControls();
 rosary.init();
-rosary.setProgressBar();
 const numOfBeats = new Array(10).fill(null);
 let beats = numOfBeats.map(() => new Circle(10, 10, 7, themeColors.theme3));
 let rosaryBeats = new RosaryBeats(
@@ -37,16 +36,13 @@ let rosaryText = new RosaryText(
 rosary.subscribe(rosaryCross.update);
 rosary.subscribe(rosaryBeats.nextBeat);
 rosary.subscribe(rosaryText.update);
+rosary.subscribe(rosary.update);
 
 function draw() {
   rosaryText.draw();
   rosaryBeats.draw();
   rosaryCross.draw();
-}
-
-function update() {
-  const speed = movingSpeed * secondsPassed;
-  rosary.update();
+  rosary.draw();
 }
 
 function gameLoop(timestamp) {
@@ -56,7 +52,6 @@ function gameLoop(timestamp) {
   if (secondsPassed > -1) {
     // Clear the entire canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    update(); // Update game objects in the loop
     draw();
   }
   // stop loop if the user reach the last prayer
@@ -71,33 +66,32 @@ document.body.append(canvas);
 // start
 window.requestAnimationFrame(gameLoop);
 const totalTimeInMin = rosary.getDuration() / 60000;
-console.log(totalTimeInMin);
 
-// canvas.addEventListener("mousemove", function (e) {
-//   console.log(
-//     rosary.progressbar[0].x,
-//     rosary.progressbar[0].y,
-//     e.clientX,
-//     e.clientY
-//   );
-//   beats.forEach((beat) => {
-//     if (
-//       e.clientX > beat.x - beat.radius &&
-//       e.clientX < beat.x + beat.radius &&
-//       e.clientY > beat.y - beat.radius &&
-//       e.clientY < beat.y + beat.radius
-//     ) {
-//       beat.color = "#fff000";
-//     }
-//   });
-//   rosary.progressbar.forEach((block) => {
-//     if (
-//       e.clientX > block.x &&
-//       e.clientX < block.x + block.width &&
-//       e.clientY > block.y &&
-//       e.clientY < block.y + block.height
-//     ) {
-//       block.color = "#fff000";
-//     }
-//   });
-// });
+canvas.addEventListener("click", function (e) {
+  // console.log(e.clientX, e.clientY);
+  const prayer = rosary.getPrayer();
+  if (e.clientX < ctx.canvas.width * 0.33) {
+    // if the user double clicks on the first half of the canvas
+    rosary.prev(); // go back once
+    rosaryBeats.prevBeat({ prayer });
+    canvas.setAttribute("style", "background-color: orange;");
+  } else if (
+    e.clientX > ctx.canvas.width * 0.66 &&
+    e.clientX < ctx.canvas.width
+  ) {
+    // if the user double clicks on the second half of the canvas
+    rosary.next(); // go forward once
+    rosaryBeats.nextBeat({ prayer });
+    canvas.setAttribute("style", "background-color: green;");
+  } else {
+    // if the user click in the middle, play or pause
+    if (rosary.isPause) {
+      rosary.play();
+      canvas.setAttribute("style", "background-color: white;");
+    } else {
+      rosary.pause();
+      canvas.setAttribute("style", "background-color: red;");
+    }
+  }
+  rosaryText.setPrayer(prayer);
+});
