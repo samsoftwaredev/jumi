@@ -55,15 +55,20 @@ function gameLoop(timestamp) {
     draw();
   }
   // stop loop if the user reach the last prayer
-  if (rosary.getPrayerIndex() < rosary.prayersList.length - 1) {
+  // or is on pause
+  if (
+    !rosary.isPause ||
+    rosary.getPrayerIndex() < rosary.prayersList.length - 1
+  ) {
     window.requestAnimationFrame(gameLoop);
   }
 }
 
-// display on body
-// document.body.append(getTopNav());
-document.body.append(canvas);
-// start
+// display on app element
+document.getElementById("app").append(canvas);
+
+// start rosary
+rosary.pause();
 window.requestAnimationFrame(gameLoop);
 const totalTimeInMin = rosary.getDuration() / 60000;
 
@@ -90,7 +95,10 @@ canvas.addEventListener("click", function (e) {
       canvas.setAttribute("style", "background-color: white;");
     } else {
       rosary.pause();
-      canvas.setAttribute("style", "background-color: red;");
+      const canvasElement = document.createElement("DIV");
+      canvasElement.setAttribute("class", "overlay");
+      const app = document.getElementById("app");
+      app.prepend(canvasElement);
     }
   }
   rosaryText.setPrayer(prayer);
