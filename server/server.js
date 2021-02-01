@@ -22,15 +22,15 @@ app.use(bodyParser.json());
 
 // index page
 app.get("/", function (req, res) {
-  res.render("index.html");
+  res.render("index.ejs");
 });
 
 app.get("/rosario", function (req, res) {
-  res.render("rosary.html");
+  res.render("rosary.ejs");
 });
 
 app.get("/grupos", function (req, res) {
-  res.render("groups.html");
+  res.render("groups.ejs");
 });
 
 app.listen(port, function () {
