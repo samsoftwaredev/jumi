@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<%- include('../../common/head'); %>
+<body>
+    <%- include('../../common/navs/mainNavigation'); %>
+    <div class="container">
+        <%- include('./common/rosaryTabs'); %>
+        <div id="rezar-el-rosario" class="m-5">
+            <canvas id="canvas" height="500" width="1000"></canvas>
+        </div>
+    </div>
+    <%- include('../../common/navs/footer'); %>
+    <%- include('../../common/scripts'); %>
+    <script type="text/javascript" src="./scripts/variables/colors.js"></script>  
+    <script type="text/javascript" src="./scripts/variables/prayers.js"></script>  
+    <script type="text/javascript" src="./scripts/variables/rosaryDays.js"></script>  
+    <script type="text/javascript" src="./scripts/variables/rosaryMysteries.js"></script>  
+    <script type="text/javascript" src="./scripts/classes/Cricle.js"></script>  
+    <script type="text/javascript" src="./scripts/classes/RosaryPrayer.js"></script>  
+    <script type="text/javascript" src="./scripts/classes/RosaryControls.js"></script>  
+    <script type="text/javascript" src="./scripts/classes/RosaryBeats.js"></script>  
+    <script type="text/javascript" src="./scripts/classes/RosaryCross.js"></script>  
+    <script type="text/javascript" src="./scripts/classes/RosaryText.js"></script>  
+    <script type="text/javascript" src="./scripts/rosary.js"></script>  
+</body>
+</html>

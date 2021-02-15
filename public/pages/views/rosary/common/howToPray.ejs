@@ -1,0 +1,26 @@
+<div class="col-sm-12 col-md-8 col-xl-9">
+    <div id="como-rezar"><h3>Como rezar el rosario?</h3></div>
+    <div id="para-que-rezar"><h3>Por que rezar el rosario?</h3></div>
+    <div id="content-prayers">
+        <h3>Oraciones</h3>
+    </div>
+</div>
+<script type="text/javascript" src="/scripts/variables/prayers.js"></script>  
+<script>
+    const contentPrayerElement =  document.querySelector("#content-prayers");
+    const div = document.createElement("div");
+
+    Object.values(prayers).filter((prayer)=> prayer.name.toLowerCase() !== "intenciones").forEach((prayer)=> {
+        const p = document.createElement("p");
+        const text = prayer.text.replace("/", "");
+        const header = document.createElement("h4");
+        p.innerText = text.replace(/\//g, "");
+        header.innerText = prayer.name;
+        p.setAttribute("id", prayer.name.toLowerCase().replace(/ /g, "_"));
+        p.setAttribute("class", "ml-3");
+        div.appendChild(header);
+        div.appendChild(p);
+    });
+    // add list of prayers
+    contentPrayerElement.append(div);
+</script>  

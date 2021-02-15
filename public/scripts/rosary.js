@@ -1,5 +1,5 @@
-const canvas = new MyCanvas().getElement();
-const ctx = canvas.getContext("2d");
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
 let movingSpeed = 50;
 let secondsPassed = 0;
@@ -38,11 +38,11 @@ rosary.subscribe(rosaryBeats.nextBeat);
 rosary.subscribe(rosaryText.update);
 rosary.subscribe(rosary.update);
 
-function draw() {
+function draw(secondsPassed) {
   rosaryText.draw();
   rosaryBeats.draw();
   rosaryCross.draw();
-  rosary.draw();
+  rosary.draw(secondsPassed);
 }
 
 function gameLoop(timestamp) {
@@ -52,7 +52,7 @@ function gameLoop(timestamp) {
   if (secondsPassed > -1) {
     // Clear the entire canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    draw();
+    draw(secondsPassed);
   }
   // stop loop if the user reach the last prayer
   // or is on pause
@@ -64,16 +64,15 @@ function gameLoop(timestamp) {
   }
 }
 
-// display on app element
-document.getElementById("app").append(canvas);
-
 // start rosary
 rosary.pause();
 window.requestAnimationFrame(gameLoop);
 const totalTimeInMin = rosary.getDuration() / 60000;
 
+// responsive
+
+// controls
 canvas.addEventListener("click", function (e) {
-  // console.log(e.clientX, e.clientY);
   const prayer = rosary.getPrayer();
   if (e.clientX < ctx.canvas.width * 0.33) {
     // if the user double clicks on the first half of the canvas

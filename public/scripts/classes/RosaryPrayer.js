@@ -8,7 +8,6 @@ class RosaryPrayer {
   prayerIndex = 0;
   constructor() {}
   prevPrayer() {
-    console.log(this.prayerIndex);
     if (this.prayerIndex > 0) {
       this.prayerIndex -= 1;
       return this.prayersList[this.prayerIndex];
@@ -16,7 +15,6 @@ class RosaryPrayer {
     return null;
   }
   nextPrayer() {
-    console.log(this.prayerIndex);
     const arrOfPrayers = Object.values(this.prayersList);
     if (this.prayerIndex <= arrOfPrayers.length - 1) {
       this.prayerIndex += 1;
@@ -82,7 +80,6 @@ class RosaryPrayer {
   }
   updatePrayer() {
     const date = new Date();
-    // console.log(this.endDateOfPrayer);
     // exit update if it reach the final prayer
     if (this.prayerIndex >= this.prayersList.length - 1) return;
 

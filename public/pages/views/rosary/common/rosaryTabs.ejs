@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs mt-3 d-flex justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" href="/rosario">Rezar El Rosario</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/como-rezar-el-rosario">¿Cómo Rezar El Rosario?</a>
+    </li>
+</ul>
+<script>
+    const currentPathname = window.location.pathname;
+    if(currentPathname === "/rosario"){
+        // make sure that is an exact match
+        const elem = document.querySelector('[href="/rosario"]');
+        elem.classList.add("active");
+    } else if (currentPathname.includes("como-rezar-el-rosario")) {
+        const elem = document.querySelector('[href="/como-rezar-el-rosario"]');
+        elem.classList.add("active");
+    } else {
+        // no matching string
+    }
+</script>

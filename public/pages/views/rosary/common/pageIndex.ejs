@@ -1,0 +1,21 @@
+<ul id="rosary-page-content">
+    <li>¿Cómo rezar el Rosario?</li>
+    <li>¿Para qué rezar el Rosario?</li>
+    <li id="prayers-types-content">Oraciones</li>
+</ul>
+<script type="text/javascript" src="/scripts/variables/prayers.js"></script>  
+<script>
+    const payerTypeContent =  document.querySelector("#prayers-types-content");
+    const ul = document.createElement("ul");
+    
+    Object.values(prayers).forEach((prayer)=> {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.innerText = prayer.name;
+        a.href = window.location.pathname + "#" + prayer.name.toLowerCase().replace(/ /g, "_");
+        li.append(a);
+        ul.append(li);
+    });
+    // add list of prayers
+    payerTypeContent.append(ul);
+</script>  

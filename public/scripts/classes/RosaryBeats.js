@@ -35,17 +35,18 @@ class RosaryBeats {
   }
   nextBeat = ({ prayer }) => {
     // if the current prayer is a beat, count it
-    console.log(this.currentBeatIndex, this.beats.length);
-    if (!prayer.beat) return;
-    this.used();
-    this.currentBeatIndex += 1;
-    this.currentBeatIndex = this.currentBeatIndex % this.beats.length;
+    if (prayer.beat) {
+      this.used();
+      this.currentBeatIndex += 1;
+      this.currentBeatIndex = this.currentBeatIndex % this.beats.length;
+    }
   };
   prevBeat = ({ prayer }) => {
-    if (!prayer.beat || this.currentBeatIndex <= 0) return;
-    this.unUsed();
-    this.currentBeatIndex -= 1;
-    this.currentBeatIndex = this.currentBeatIndex % this.beats.length;
+    if (prayer.beat && this.currentBeatIndex >= 0) {
+      this.unUsed();
+      this.currentBeatIndex -= 1;
+      this.currentBeatIndex = this.currentBeatIndex % this.beats.length;
+    }
   };
   jumpTo(num) {
     this.currentBeatIndex = num % this.beats.length;
